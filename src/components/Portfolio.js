@@ -7,7 +7,7 @@ const Portfolio = () => {
             <p>Here are a few examples of my work:</p>
             <Link>Chloe Medrano Photography</Link>
             <Link>Punk API App</Link>
-            <Link>Sample Wordpress Theme</Link>
+            <Link>Sample Wordpress Site: Community Art Center</Link>
         </div>
     )
     
