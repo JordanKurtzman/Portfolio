@@ -2,13 +2,12 @@ import axios from 'axios';
 import React from 'react'
 
 export default class Contact extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            email: '',
-            message: ''
-        }
+    
+    state = {
+        name: '',
+        email: '',
+        message: '',
+        error: ''
     }
     handleFormSubmit(){
         e.preventDefault()
@@ -24,6 +23,30 @@ export default class Contact extends React.Component {
                     console.log("Message failed to send.")
                 }
             })
+        }
+        render(){
+            
+        return   (<div>
+                <h1>Contact</h1>
+                {this.state.error && <p>{this.state.error}</p>}
+                <form>
+                    <input 
+                    type="text"
+                    placeholder="Your name"
+                    value={this.state.name}/>
+
+                    <input
+                    type="text"
+                    placeholder="Your email"
+                    value={this.state.email}/>
+
+                    <label>Your message:</label>
+                    <input
+                    type="textarea"
+                    value={this.state.message}/>
+                </form>
+            </div>)
+                
         }
     }
 
