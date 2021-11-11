@@ -1,0 +1,13 @@
+nav ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    li {
+        padding: 1.5rem;
+        
+    }
+}
+a:visited, a:hover, a:active, a:link {
+    text-decoration: none;
+    color: black;
+}

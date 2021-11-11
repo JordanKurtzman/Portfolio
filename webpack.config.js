@@ -1,5 +1,6 @@
 //entry --> output
 const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
     mode: 'development',
@@ -24,7 +25,13 @@ module.exports = {
             {
                 test: /\.s?css$/i,
                 use: ["style-loader", "css-loader", "sass-loader"]
-            }
+            },
+            {
+                test: /\.(png|jpg|gif)$/i,
+                loader: 'file-loader'
+            
+
+            },
         ]
     },
     devtool: 'eval-cheap-module-source-map',
