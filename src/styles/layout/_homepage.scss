@@ -9,10 +9,31 @@
     &__grid{
         display: grid;
         width: 90%;
-        margin-right: auto;
-        margin-left: auto;
+        margin: 0 auto;
         padding: 2.5rem;
         gap: 1.5rem;
-        grid-template-columns: repeat(auto-fill, minmax(25rem, max-content))
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+        grid-auto-flow: dense;
+        align-items: center;
+        justify-items: center;
+        @include resize(skinny){
+            grid-template-columns: 1fr 1fr;
+        }
+        @include respond(phone){
+            grid-template-columns: 1fr 1fr;
+        }
     }
+    
+}
+
+.homepage__link {
+    color: $link-color;
+    text-decoration: none;
+    font-weight: bold;
+}
+.homepage__text{
+    margin: $nav-height auto;
+    width: 95%;
+    padding: .5rem;
+        
 }

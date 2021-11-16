@@ -1,13 +1,69 @@
-nav ul {
+nav{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    background-color: $background-color;
+    flex-direction: row;
+    align-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 6rem;
+}
+
+.nav__menu {
     display: flex;
     flex-direction: row;
     list-style-type: none;
+    @include resize(mid){
+        display: none;
+            &.active{
+                display: flex;
+                position: absolute;
+                left: 0;
+                top: 100%;
+                right: 0;
+                flex-direction: column;
+            }
+    }
+    @include respond(tab-port){
+        display: none;
+            &.active{
+                display: flex;
+                position: absolute;
+                left: 0;
+                top: 100%;
+                right: 0;
+                flex-direction: column;
+            }
+    }
+    
+    
+    
+    
+
+    
+    
     li {
         padding: 1.5rem;
-        
     }
+    
+    margin-top: 0;
 }
-a:visited, a:hover, a:active, a:link {
+.navlink:visited, .navlink:hover, .navlink:active, .navlink:link {
     text-decoration: none;
     color: black;
+    font-size: 1.8rem;
+    
+}
+
+.navtoggle{
+    display: none;
+    @include respond(tab-port){
+        display: inline-block;
+    }
+    @include resize(mid){
+        display: inline-block;
+    }
+        
 }
