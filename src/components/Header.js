@@ -2,10 +2,6 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 
-
-
-
-
 export default class Header extends React.Component {
     constructor(props) {
         super(props)
@@ -19,12 +15,23 @@ export default class Header extends React.Component {
                isActive: !this.state.isActive}
         })
     }
+    componentDidMount(){
+        window.addEventListener('resize', () =>{
+            this.setState(() => {
+                if(window.innerWidth > 768){
+                    return {
+                        isActive: false
+                    }
+                }
+            })
+        })
+    }
 
     render(){
         return(
             <div>
-                <nav className={this.state.isActive? 'active' : null}>
-                    <ul className="nav__menu">
+                <nav>
+                    <ul className={this.state.isActive ? 'active' : null}>
                         <li>
                             <NavLink className="navlink" exact to="/" activeClassName="is-active">Home</NavLink>
                         </li>
@@ -34,10 +41,12 @@ export default class Header extends React.Component {
                         <li>
                             <NavLink className="navlink" to="/contact" activeClassName="is-active">Contact</NavLink>
                         </li>
-                        <button className="navtoggle" onClick={this.handleToggle}>
-                        </button>
+                        
 
                     </ul>
+                    <button className="navtoggle" onClick={this.handleToggle}>
+                        <i className=" navtoggle__icon fas fa-bars"></i>
+                    </button>
 
                 </nav>
             </div>
