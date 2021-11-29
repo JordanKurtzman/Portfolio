@@ -1,0 +1,81 @@
+.portfoliocontainer {
+    margin-top: $nav-height;
+    
+}
+
+.portfolio {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+   
+    &__piece{
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem 0;
+        
+        &--imgcontainer{
+            width: 80%;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            margin: auto;
+            position: relative;
+            h3 {
+                font-size: 3rem;
+                color: $color-black;
+                padding: 1.5rem 0;
+                text-decoration: none;
+                font-weight: 400;
+            }
+        }
+        &--img{
+            max-width: 100%;
+            height: auto;
+        }
+        
+    }
+    a:link, a:active, a:visited {
+        text-decoration: none;
+        color: $link-color;
+        font-weight: 700;
+        font-size: 2.5rem;
+        padding: .5rem;
+    }
+    a:hover{
+        color: $highlight-color;
+    }
+
+}
+
+.fadebox {
+    background-color: $color-black;
+    color: $color-green;
+    position: absolute;
+    transition: all 300ms ease-out;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &__p{
+        padding: 1.5rem;
+        font-size: 2.5rem;
+    
+    }
+    &__plink{
+        font-weight: 700;
+        font-size: 2.5rem;
+        padding: .5rem;
+        color: $color-green;
+    }
+
+}
+
+.portfolio__piece--imgcontainer:hover .fadebox {
+    opacity: 0.8;
+}
