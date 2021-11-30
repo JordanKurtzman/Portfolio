@@ -5,8 +5,10 @@ import { BeerApp, ArtsCenter } from './Images'
 const Portfolio = () => {
     return(
         <div className="portfoliocontainer">
+        
             
             <div className="portfolio">
+                <h1 className="portfolio__heading">Projects</h1>
                 <div className="portfolio__piece">
                     
                     
