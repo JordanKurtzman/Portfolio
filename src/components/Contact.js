@@ -1,55 +1,81 @@
 
-import React, { useState } from 'react'
-import firebaseDB from '../firebase/firebase'
+import React from 'react'
+import axios from 'axios'
 
 
-const ContactForm = () => {
-    const [state, setState] = useState({
-        name: '',
-        email: '',
-        message: ''
-    })
-    const { name, email, message } = state
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        if(!name || !email || !message){
-            console.log('error!')
-        }else{
-            firebaseDB.child('contacts').push(state)
-            setState({name: '', email: '', message: ''}),
-            console.log('success!')
+class ContactForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            email: '',
+            message: '',
+            sent: false
         }
     }
-    const handleNameChange = (e) => {
-        setState({ ...state, name: e.target.value})
+
+    //handle inputs
+    handleNameChange = (e) => {
+        this.setState(() =>({name: e.target.value }))
     }
-    const handleEmailChange = (e) => {
-        setState({ ...state, email: e.target.value })
+    handleEmailChange = (e) => {
+        this.setState(() =>({email: e.target.value}))
     }
-    const handleMessageChange = (e) => {
-        setState({ ...state, message: e.target.value })
+    handleMessageChange = (e) => {
+        this.setState(() => ({ message: e.target.value }))
+    }
+    resetForm = () => {
+        this.setState(() =>({name: '', email: '', message: ''}))
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+        let data = {
+            name: this.state.name,
+            email: this.state.email,
+            message: this.state.message
+        }
+        axios.post('/api/send', data).then(()=>{
+            this.setState(()=> ({sent: true}), this.resetForm())
+            console.log('submit')
+        }).catch(() =>{
+            console.log('not sent')
+        })
+    }
+
+    
+    
+    
+    
+    //Component lifecycle method
+    componentDidMount = () => {
+        console.log('component mounted')
+        this.setState(() => {
+            return { name: '', email: '', message: '' }
+        })
     }
         
             
-        return   (
-            <div className="contactcontainer">
+        render()   {
+
+            return (<div className="contactcontainer">
                 <div className="contact">
                     <h1 className="contact__heading">Get in touch</h1>
-                    
-                    <form className="contact__form" onSubmit={handleSubmit}>
+
+                    <form className="contact__form" action={'/api/send'} onSubmit={((e) => handleSubmit(e))}>
                         <input
-                            
-                            value={name}
-                            onChange={handleNameChange}
+
+                            value={this.state.name}
+                            onChange={this.handleNameChange}
                             className="contact__form--input"
                             type="text"
                             placeholder="Your name"
-                            required/>
+                            required />
 
                         <input
-                            
-                            value={email}
-                            onChange={handleEmailChange}
+
+                            value={this.state.email}
+                            onChange={this.handleEmailChange}
                             className="contact__form--input"
                             type="text"
                             placeholder="Your email"
@@ -57,19 +83,20 @@ const ContactForm = () => {
 
                         <label className="contact__form--label">Your message:</label>
                         <textarea
-                            value={message}
-                            onChange={handleMessageChange}
+                            value={this.state.message}
+                            onChange={this.handleMessageChange}
                             className="contact__form--textarea"
                             type="textarea"
                             required />
                     </form>
                     <button className="contact__form--submit" type="submit">Submit</button>
                 </div>
-            </div>
+            </div>)
             
-            )
+            
+            
                 
-        
+        }
     }
 
 
