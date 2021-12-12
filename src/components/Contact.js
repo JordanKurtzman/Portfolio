@@ -15,7 +15,7 @@ const ContactForm = () => {
             name: '',
             email: '',
             message: '',
-            sent: false
+            showSuccess: undefined
         })
 
 
@@ -71,19 +71,29 @@ const ContactForm = () => {
             setInput((inputs) =>{
                 return {
                     ...inputs,
-                    sent: true
+                    showSuccess: 'success'
+                }
+            }),
+
+
+        ).catch((error) =>{
+            console.log(error),
+            setInput((inputs) =>{
+                return {
+                    ...inputs,
+                    showSuccess: 'error'
                 }
             })
-
-        )
-        setInput(() =>{
+        })
+        setInput((inputs) =>{
             return {
+                ...inputs,
                 name: '',
                 email: '',
                 message: '',
-                sent: false
             }
         })
+
         
     }
 
@@ -106,7 +116,8 @@ const ContactForm = () => {
                     <h1 className="contact__heading">Get in touch</h1>
 
                     <form className="contact__form" onSubmit={handleSubmit}>
-                   
+                        {inputs.showSuccess === 'success' && <p>Thank you for your submission!</p>}
+                        {inputs.showSuccess === 'error' && 'error' && <p>There was an error in submitting your form - please try again.</p>}
                         <input
                             name="name"
                             value={inputs.name}
