@@ -1,8 +1,9 @@
 
 import React, {useRef, useState} from 'react'
-import emailjs, {init} from 'emailjs-com'
+import * as Yup from 'yup'
+import process from 'process'
 
-init("user_v5fexTV1gh7MPcSZhLWXC")
+
 
 
 const ContactForm = () => {
@@ -42,27 +43,53 @@ const ContactForm = () => {
         }));
     };
 
-    //Form reset
+    
 
-    const resetForm = () => {
-        return {
-            name: '',
-            email: '',
-            message: '',
-            sent: false
-        }
-    }
+    //Form validation
+
+    let validationSchema = Yup.object().shape({
+        name: Yup.string().required(),
+        email: Yup.string().email().required(),
+        message: Yup.string().required()
+    })
 
     //Submission
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        emailjs.sendForm('service_omhjqre', 'template_y517kc4', form.current, 'user_v5fexTV1gh7MPcSZhLWXC')
-            .then((result) => {
-                console.log(result.text);
-            }, (error) => {
-                console.log(error.text);
-            });
+        Email.send({
+            Host: 'smtp.mailtrap.io',
+            Username: '74439de659f812',
+            Password: '1894d104cda876',
+            To: 'jordankurtzman@gmail.com',
+            From: inputs.email,
+            Subject: "New contact form submission",
+            Body: `<p>You have a message from ${inputs.name} <${inputs.email}></p>
+                            <p>${inputs.message}</p>`,
+        }).then(
+            message => console.log(message),
+            setInput((inputs) =>{
+                return {
+                    ...inputs,
+                    sent: true
+                }
+            })
+
+        )
+        setInput(() =>{
+            return {
+                name: '',
+                email: '',
+                message: '',
+                sent: false
+            }
+        })
+        
+    }
+
+    //Recaptcha
+    const onChange = (value) => {
+        console.log("Captcha value:", value);
     }
 
     
@@ -78,7 +105,8 @@ const ContactForm = () => {
                 <div className="contact">
                     <h1 className="contact__heading">Get in touch</h1>
 
-                    <form className="contact__form" ref={form}>
+                    <form className="contact__form" onSubmit={handleSubmit}>
+                   
                         <input
                             name="name"
                             value={inputs.name}
@@ -106,6 +134,7 @@ const ContactForm = () => {
                             type="textarea"
                             required />
                     </form>
+                    
                     <button className="contact__form--submit" type="submit" onClick={(e) => {
                         handleSubmit(e);
                     }}>Submit</button>
@@ -117,6 +146,5 @@ const ContactForm = () => {
                 
         }
     
-
-
 export default ContactForm
+
