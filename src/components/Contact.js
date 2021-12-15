@@ -1,15 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup'
-
-
-
-
-const schema = yup.object({
-    firstName: yup.string().required(),
-    email: yup.string().email().required()
-}).required();
+import process from 'process'
 
 const ContactForm = () => {
     const { register, handleSubmit, reset, formState: { isSubmitSuccessful, isSubmitted, errors } } = useForm({
@@ -21,13 +12,14 @@ const ContactForm = () => {
         },
         
     })
+    
 
     const onSubmit = (data) =>    
         Email.send({
             Host: 'smtp.mailtrap.io',
-            Username: '74439de659f812',
-            Password: '1894d104cda876',
-            To: 'jordankurtzman@gmail.com',
+            Username: process.env.MAILTRAP_USERNAME,
+            Password: process.env.MAILTRAP_PASSWORD,
+            To: process.env.RECEIVER_EMAIL,
             From: data.email,
             Subject: "New contact form submission",
             Body: `<p>You have a message from ${data.name} <${data.email}></p>
@@ -36,11 +28,9 @@ const ContactForm = () => {
             message => console.log(message),
             reset()
             
-            
 
         ).catch((error) => {
             console.log(error),
-            
             reset()
             
 

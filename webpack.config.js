@@ -1,6 +1,7 @@
 //entry --> output
 const path = require('path')
 const webpack = require('webpack')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
     mode: 'development',
@@ -11,7 +12,7 @@ module.exports = {
         path: path.resolve(__dirname, '/public'),
         filename: 'bundle.js'
     },
-    plugins: [
+    plugins: [new Dotenv(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development')
         }), 
