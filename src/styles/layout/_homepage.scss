@@ -45,7 +45,7 @@
     padding: 8rem 2rem;
     width: 90%;
     margin: $nav-height auto;
-    animation: slide-up 1s ease-in 1s;
+    animation: slide-up .2s ease-in;
 }
 .homepage__text{
     width: 95%;
@@ -78,5 +78,14 @@
         border-radius: 50%;
         box-shadow: 0 0 16px $link-color;
         border: 1px solid $link-color;
+    }
+}
+
+@keyframes slide-up {
+    0%{
+        transform: translateY(15%)
+    }
+    100%{
+        transform: translateY(0%)
     }
 }
