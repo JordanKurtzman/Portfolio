@@ -31,14 +31,52 @@
     text-decoration: none;
     font-weight: bold;
 }
-.homepage__text{
+
+.homepage__container {
+    display: flex;
+    height: 100vh;
+    
+    @include resize(mid){
+        display: inline-flexbox;
+    }
+    @include respond(tab-port){
+        display: inline-flexbox;
+    }
+    padding: 8rem 2rem;
+    width: 90%;
     margin: $nav-height auto;
+    animation: slide-up 1s ease-in 1s;
+}
+.homepage__text{
     width: 95%;
     padding: .5rem;
+    @include resize(mid){
+        width: 100%;
+    }
+    @include respond(tab-port){
+        width: 100%;
+    }
     p {
         font-size: 1.8rem;
         line-height: 2.2rem;
         font-weight: 400;
     }
         
+}
+.homepage__picture{
+    width: 50%;
+    padding: 1.5rem;
+    @include resize(mid){
+        width: 30%;
+    }
+    @include respond(tab-port){
+        width: 30%;
+    }
+    &--img{
+        max-width: 100%;
+        height: auto;
+        border-radius: 50%;
+        box-shadow: 0 0 16px $link-color;
+        border: 1px solid $link-color;
+    }
 }

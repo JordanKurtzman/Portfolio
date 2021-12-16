@@ -9,5 +9,6 @@ import PhpLogo from '../images/PhpLogo.png'
 import HtmlLogo from '../images/HTML5Logo.png'
 import BeerApp from '../images/PunkAPIScreenShot.png'
 import ArtsCenter from '../images/WordPressScreenShot.png'
+import Headshot from '../images/headshot.JPG'
 
-export { BabelLogo, Bootstrap, JavaScriptLogo, SassLogo, CSSLogo, WebpackLogo, ReactLogo, PhpLogo, HtmlLogo, BeerApp, ArtsCenter }
+export { BabelLogo, Bootstrap, JavaScriptLogo, SassLogo, CSSLogo, WebpackLogo, ReactLogo, PhpLogo, HtmlLogo, BeerApp, ArtsCenter, Headshot }
