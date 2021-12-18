@@ -3,6 +3,7 @@
     height: auto;
     &__container{
         width: 7.5rem;
+        padding-top: $nav-height;
         
 
     }
@@ -16,6 +17,7 @@
         grid-auto-flow: dense;
         align-items: center;
         justify-items: center;
+        
         @include resize(skinny){
             grid-template-columns: 1fr 1fr;
         }
@@ -24,6 +26,12 @@
         }
     }
     
+}
+.logo__section{
+    height: 100vh;
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 
 .homepage__link {
@@ -88,4 +96,7 @@
     100%{
         transform: translateY(0%)
     }
+}
+.hashlink:active, .hashlink:visited, .hashlink:link {
+    color: $link-color;
 }
