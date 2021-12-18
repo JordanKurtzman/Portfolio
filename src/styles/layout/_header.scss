@@ -39,6 +39,7 @@ nav ul {
                 a:link, a:active, a:visited{
                     display: block;
                     color: $color-black;
+                    cursor: pointer;
                 }
                 a:hover{
                     color: $color-green;

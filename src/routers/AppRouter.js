@@ -5,6 +5,7 @@ import Portfolio from '../components/Portfolio'
 import Header from '../components/Header'
 import Contact from '../components/Contact'
 import NotFound from '../components/NotFound'
+import Footer from '../components/Footer'
 
 
 
@@ -28,6 +29,7 @@ const AppRouter = () => {
                         <NotFound />
                     </Route>
                 </Switch>
+                <Footer/>
             </div>
         </Router>
 
