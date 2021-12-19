@@ -41,7 +41,7 @@ const ContactForm = () => {
         <div className='contactcontainer'>
             <div className='contact'>
                 <h1 className="contact__heading">Get in touch</h1>
-                {isSubmitSuccessful && <p>Thank you for your submission!</p>}
+                {isSubmitSuccessful && <p>Thank you for reaching out!</p>}
                 {(!isSubmitSuccessful && isSubmitted) && <p>There was an error in submitting your form - please try again.</p>}
                     <form onSubmit={handleSubmit(onSubmit)} className='contact__form'>
 

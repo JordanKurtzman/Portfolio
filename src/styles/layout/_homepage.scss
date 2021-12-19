@@ -4,6 +4,12 @@
     &__container{
         width: 7.5rem;
         padding-top: $nav-height;
+        @include respond(tab-port){
+            padding: $nav-height;
+        }
+        @include resize(mid){
+            padding: $nav-height;
+        }
         
 
     }
@@ -29,6 +35,12 @@
 }
 .logo__section{
     height: 100vh;
+    @include respond(tab-port){
+        height: 60%;
+    }
+    @include resize(mid){
+        height: 60%;
+    }
     display: flex;
     align-content: center;
     justify-content: center;
@@ -46,9 +58,13 @@
     
     @include resize(mid){
         display: inline-flexbox;
+        height: 40%;
+        
     }
     @include respond(tab-port){
         display: inline-flexbox;
+        height: 40%;
+        
     }
     padding: 8rem 2rem;
     width: 90%;
