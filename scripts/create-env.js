@@ -1,2 +1,2 @@
 const fs = require('fs')
-fs.fileWriteSync('./.env.')
+fs.writeFileSync('./.env.')
