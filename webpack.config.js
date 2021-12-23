@@ -12,7 +12,9 @@ module.exports = {
         path: path.resolve(__dirname, '/public'),
         filename: 'bundle.js'
     },
-    plugins: [new Dotenv(),
+    plugins: [new Dotenv({
+        systemvars: true
+    }),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development')
         }), 
