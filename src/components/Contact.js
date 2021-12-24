@@ -20,6 +20,7 @@ const ContactForm = () => {
             console.log('Successfully sent form data to Netlify server')
         }
     })
+    const onSubmit = (data) => netlify.handleSubmit(null, data)
     const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i
 
     
