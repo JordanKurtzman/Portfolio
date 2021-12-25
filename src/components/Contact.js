@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import { Form, Field, ErrorMessage, Formik } from 'formik';
 
-export default Contact = (props) => {
+const Contact = () => {
     <Formik
 
         initialValues={{
@@ -110,3 +110,5 @@ export default Contact = (props) => {
         
     
 }
+
+export default Contact
