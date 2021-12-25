@@ -1,15 +1,16 @@
 import React from 'react'
-import { Form, Field, ErrorMessage, Formik } from 'formik';
+import { Form, Field, ErrorMessage, Formik, setNestedObjectValues } from 'formik';
 
 const Contact = () => (
     <Formik
         initialValues={{
             name: '',
             email: '',
-            message: ''
+            message: '',
+            
         }}
         onSubmit={
-            (values, actions) => {
+            (values, actions, setStatus) => {
                 fetch("/", {
                     method: "POST",
                     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -18,9 +19,17 @@ const Contact = () => (
                     .then(() => {
                         alert('Success');
                         actions.resetForm()
+                        setStatus({
+                            sent: true,
+                            msg: 'Thanks for reaching out!'
+                        })
                     })
                     .catch(() => {
                         alert('Error');
+                        setStatus({
+                            sent: false,
+                            msg: 'There was an error sending your message. Please try again.'
+                        })
                     })
                     .finally(() => actions.setSubmitting(false))
             }
@@ -42,14 +51,12 @@ const Contact = () => (
         }}
     >
     
-        {({ handleSubmit, handleChange, handleBlur, values, errors, touched}) => (
+        {({ handleSubmit, handleChange, handleBlur, values, status}) => (
         <div className="contactcontainer">
             <div className='contact'>
                 <h1 className="contact__heading">Get in touch</h1>
-                {success && (
-                    <p>Thanks for your message! </p>
-                )}
-
+                    {status.sent && <p>{status.msg}</p>}
+                    {!status.sent && <p>{status.msg}</p>}
                 <Form
                     className='contact__form'
                     name="contact"
