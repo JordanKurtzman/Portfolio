@@ -3,7 +3,6 @@ import { Form, Field, ErrorMessage, Formik } from 'formik';
 
 const Contact = () => {
     <Formik
-
         initialValues={{
             name: '',
             email: '',
@@ -25,7 +24,7 @@ const Contact = () => {
                     })
                     .finally(() => actions.setSubmitting(false))
             }
-            
+
         }
         validate={values => {
             const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -42,11 +41,13 @@ const Contact = () => {
             return errors;
         }}
 
+
+
     
     
-    />
-    {
-        ({ handleSubmit, handleChange, handleBlur, values, errors, touched}) => (
+    >
+    
+        {({ handleSubmit, handleChange, handleBlur, values, errors, touched}) => (
         <div className="contactcontainer">
             <div className='contact'>
                 <h1 className="contact__heading">Get in touch</h1>
@@ -106,9 +107,10 @@ const Contact = () => {
         </div>
 
         )}
-
-    
+    </Formik>
         
+    
+  
     
 }
 
