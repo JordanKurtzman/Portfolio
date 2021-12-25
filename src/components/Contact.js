@@ -1,6 +1,14 @@
 import React from 'react'
 import { Form, Field, ErrorMessage, Formik, setNestedObjectValues } from 'formik';
 
+
+const encode = (data) => {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .join("&");
+}
+
+
 const Contact = () => (
     <Formik
         initialValues={{
@@ -17,14 +25,14 @@ const Contact = () => (
                     body: encode({ "form-name": "contact", ...values })
                 })
                     .then(() => {
-                        alert('Success');
+                        console.log('Success');
                         actions.resetForm()
                         actions.setStatus({
                             sent: true,
                         })
                     })
                     .catch(() => {
-                        alert('Error');
+                        console.log('Error');
                         actions.setStatus({
                             sent: false,
                         })
