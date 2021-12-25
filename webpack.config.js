@@ -1,6 +1,8 @@
 //entry --> output
 const path = require('path')
 const webpack = require('webpack')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 
 
 module.exports = {
@@ -13,6 +15,8 @@ module.exports = {
         filename: 'bundle.js'
     },
     plugins: [
+        new MiniCssExtractPlugin({ filename: './cssnpm /app.css' })
+        ,
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development')
         }), 
@@ -36,7 +40,7 @@ module.exports = {
             },
             {
                 test: /\.s?css$/i,
-                use: ["style-loader", "css-loader", "sass-loader"]
+                use: ["style-loader", MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
             },
             {
                 test: /\.(png|jpg|gif)$/i,
