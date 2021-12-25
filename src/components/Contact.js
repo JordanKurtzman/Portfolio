@@ -1,4 +1,4 @@
-import react, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 
 export default function Contact() {
     const [success, setSuccess] = useState(false);
