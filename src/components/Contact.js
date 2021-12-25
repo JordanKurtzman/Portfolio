@@ -45,7 +45,8 @@ const Contact = () => {
     
     
     />
-        {props => (
+    {
+        ({ handleSubmit, handleChange, handleBlur, values, errors, touched}) => (
         <div className="contactcontainer">
             <div className='contact'>
                 <h1 className="contact__heading">Get in touch</h1>
@@ -58,7 +59,7 @@ const Contact = () => {
                     name="contact"
                     action="/contact/?success=true"
                     data-netlify="true"
-                    onSubmit={props.handleSumbit}
+                    onSubmit={handleSubmit}
                 >
                     <input type="hidden" name="form-name" value="contact" />
 
@@ -67,9 +68,9 @@ const Contact = () => {
                         type="text"
                         name='name'
                         placeholder='Your name'
-                        value={props.values.name}
-                        onChange={props.handleChange}
-                        onBlur={props.handleBlur}
+                        value={values.name}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                         />
                     <ErrorMessage name="name" />
 
@@ -78,18 +79,18 @@ const Contact = () => {
                         name='email'
                         className="contact__form--input"
                         placeholder='Your email'
-                        value={props.values.email}
-                        onChange={props.handleChange}
-                        onBlur={props.handleBlur}
+                        value={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                         />
                     <ErrorMessage name="email" />
                     <Field
                         as='textarea'
                         name='message'
                         className="contact__form--textarea"
-                        value={props.values.message}
-                        onChange={props.handleChange} 
-                        onBlur={props.handleBlur}
+                        value={values.message}
+                        onChange={handleChange} 
+                        onBlur={handleBlur}
                         />
                     <ErrorMessage name="message" />
 
