@@ -21,14 +21,12 @@ const Contact = () => (
                         actions.resetForm()
                         actions.setStatus({
                             sent: true,
-                            msg: 'Thanks for reaching out!'
                         })
                     })
                     .catch(() => {
                         alert('Error');
                         actions.setStatus({
                             sent: false,
-                            msg: 'There was an error sending your message. Please try again.'
                         })
                     })
                     .finally(() => actions.setSubmitting(false))
@@ -55,8 +53,6 @@ const Contact = () => (
         <div className="contactcontainer">
             <div className='contact'>
                 <h1 className="contact__heading">Get in touch</h1>
-                    {status.sent && <p>{status.msg}</p>}
-                    {!status.sent && <p>{status.msg}</p>}
                 <Form
                     className='contact__form'
                     name="contact"
