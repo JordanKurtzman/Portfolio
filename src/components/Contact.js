@@ -14,7 +14,7 @@ const ContactForm = () => {
     })
     const netlify = useNetlifyForm({
         name: 'react-hook-form',
-        action: '/thanks',
+        action: '/contact',
         honeypotName: 'bot-field',
         onSuccess: (response, context) => {
             console.log('Successfully sent form data to Netlify server')
