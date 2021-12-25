@@ -4,7 +4,7 @@ import { useNetlifyForm, NetlifyFormProvider, NetlifyFormComponent, Honeypot } f
 
 const ContactForm = () => {
     const { register, handleSubmit, reset, formState: { isSubmitSuccessful, isSubmitted, errors } } = useForm({
-        
+        mode: 'onBlur',
         defaultValues: {
             name: '',
             email: '',
@@ -13,14 +13,19 @@ const ContactForm = () => {
         
     })
     const netlify = useNetlifyForm({
-        name: 'Contact',
-        action: '/send',
+        name: 'react-hook-form',
+        action: '/thanks',
         honeypotName: 'bot-field',
         onSuccess: (response, context) => {
             console.log('Successfully sent form data to Netlify server')
         }
     })
-    const onSubmit = (data) => netlify.handleSubmit(null, data)
+    const onSubmit = (data) => netlify.handleSubmit(null, data).then(() =>{
+        console.log('submitted'),
+        reset()
+    })
+
+
     const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i
 
     
