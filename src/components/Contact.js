@@ -18,6 +18,7 @@ export default function Contact() {
                 )}
                 
                     <form
+                    className='contact__form'
                         name="contact"
                         method="POST"
                         action="/contact/?success=true"
@@ -25,9 +26,9 @@ export default function Contact() {
                     >
                         <input type="hidden" name="form-name" value="contact" />
                         <input
+                        className='contact__form--input'
                         type="text"
                         name='name'
-                        className="contact__form--input"
                         placeholder='Your name'/>
                     <input
                         type="email"
@@ -42,7 +43,7 @@ export default function Contact() {
                         
                         
                         <div>
-                            <button type="submit">Send</button>
+                        <button className="contact__form--submit" type="submit">Send</button>
                         </div>
                     </form>
                 
