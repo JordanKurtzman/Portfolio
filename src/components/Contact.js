@@ -9,6 +9,8 @@ export default function Contact() {
         }
     }, []);
 
+    const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i
+
     return (
         <div className="contactcontainer">
             <div className='contact'>
@@ -29,12 +31,14 @@ export default function Contact() {
                         className='contact__form--input'
                         type="text"
                         name='name'
-                        placeholder='Your name'/>
+                        placeholder='Your name'
+                        required/>
                     <input
                         type="email"
                         name='email'
                         className="contact__form--input"
-                        placeholder='Your email' />
+                        placeholder='Your email' 
+                        required/>
                     <textarea
                     name='message'
                     className="contact__form--textarea" />    
