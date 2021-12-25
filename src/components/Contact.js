@@ -10,7 +10,7 @@ const Contact = () => (
             
         }}
         onSubmit={
-            (values, actions, setStatus) => {
+            (values, actions) => {
                 fetch("/", {
                     method: "POST",
                     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -19,14 +19,14 @@ const Contact = () => (
                     .then(() => {
                         alert('Success');
                         actions.resetForm()
-                        setStatus({
+                        actions.setStatus({
                             sent: true,
                             msg: 'Thanks for reaching out!'
                         })
                     })
                     .catch(() => {
                         alert('Error');
-                        setStatus({
+                        actions.setStatus({
                             sent: false,
                             msg: 'There was an error sending your message. Please try again.'
                         })
