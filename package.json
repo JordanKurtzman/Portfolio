@@ -22,6 +22,7 @@
     "express": "^4.17.1",
     "firebase-tools": "^9.23.0",
     "nodemailer": "^6.7.2",
+    "normalize-scss": "^7.0.1",
     "normalize.css": "^8.0.1",
     "process": "^0.11.10",
     "react": "^17.0.2",
