@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Field, ErrorMessage, Formik } from 'formik';
 
-const Contact = () => {
+const Contact = () => (
     <Formik
         initialValues={{
             name: '',
@@ -40,11 +40,6 @@ const Contact = () => {
             }
             return errors;
         }}
-
-
-
-    
-    
     >
     
         {({ handleSubmit, handleChange, handleBlur, values, errors, touched}) => (
@@ -112,6 +107,6 @@ const Contact = () => {
     
   
     
-}
+)
 
 export default Contact
