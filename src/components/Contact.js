@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Field, ErrorMessage, Formik, setNestedObjectValues } from 'formik';
+import { Form, Field, ErrorMessage, Formik } from 'formik';
 
 
 const encode = (data) => {
@@ -17,7 +17,10 @@ const Contact = () => (
             message: '',
             
         }}
-        initialStatus={{sent: undefined}}
+        initialStatus={{
+            sent: undefined,
+            error: undefined
+        }}
         onSubmit={
             (values, actions) => {
                 fetch("/", {
@@ -29,13 +32,15 @@ const Contact = () => (
                         console.log('Success');
                         actions.resetForm()
                         actions.setStatus({
-                            sent: true
+                            sent: true,
+                            error: false
                         })
                     })
                     .catch(() => {
                         console.log('Error');
                         actions.setStatus({
-                            sent: false
+                            sent: false,
+                            error: true
                             
                         })
                     })
@@ -66,8 +71,12 @@ const Contact = () => (
                 <h1 className="contact__heading">Get in touch</h1>
                     {status && status.sent ? (
                         <p>Thanks for reaching out!</p> ) : 
-                        {submitCount} && (<p>There was an error sending your message. Please try again.</p>
-                    )}
+                        null
+                    }
+                    {status && status.error ? (
+                        <p>There was an error sending your message.</p>) :
+                        null
+                    }
                 <Form
                     className='contact__form'
                     name="contact"
