@@ -17,7 +17,7 @@ const Contact = () => (
             message: '',
             
         }}
-        initialStatus={{sent: undefined}}
+        initialStatus={{sent: ''}}
         onSubmit={
             (values, actions) => {
                 fetch("/", {
