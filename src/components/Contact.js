@@ -17,7 +17,7 @@ const Contact = () => (
             message: '',
             
         }}
-        initialStatus={{sent: ''}}
+        initialStatus={{sent: undefined}}
         onSubmit={
             (values, actions) => {
                 fetch("/", {
@@ -29,13 +29,14 @@ const Contact = () => (
                         console.log('Success');
                         actions.resetForm()
                         actions.setStatus({
-                            sent: true,
+                            sent: true
                         })
                     })
                     .catch(() => {
                         console.log('Error');
                         actions.setStatus({
-                            sent: false,
+                            sent: false
+                            
                         })
                     })
                     .finally(() => actions.setSubmitting(false))
@@ -59,14 +60,13 @@ const Contact = () => (
         }}
     >
     
-        {({ handleSubmit, handleChange, handleBlur, values, status}) => (
+        {({ handleSubmit, handleChange, handleBlur, values, status, submitCount}) => (
         <div className="contactcontainer">
             <div className='contact'>
                 <h1 className="contact__heading">Get in touch</h1>
                     {status && status.sent ? (
-                        <p>Thanks for reaching out!</p>
-                    ) : (
-                        <p>There was an error sending your message. Please try again.</p>
+                        <p>Thanks for reaching out!</p> ) : 
+                        {submitCount} && (<p>There was an error sending your message. Please try again.</p>
                     )}
                 <Form
                     className='contact__form'
