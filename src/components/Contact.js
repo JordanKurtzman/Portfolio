@@ -38,6 +38,7 @@ const Contact = () => (
                         })
                     })
                     .finally(() => actions.setSubmitting(false))
+                    
             }
 
         }
@@ -61,6 +62,11 @@ const Contact = () => (
         <div className="contactcontainer">
             <div className='contact'>
                 <h1 className="contact__heading">Get in touch</h1>
+                    {status && status.sent ? (
+                        <p>Thanks for reaching out!</p>
+                    ) : (
+                        <p>There was an error sending your message. Please try again.</p>
+                    )}
                 <Form
                     className='contact__form'
                     name="contact"
