@@ -18,16 +18,18 @@ const HomePage = () => {
             
             
             <div className="logo__section" id="sectiontwo">
+                
                 <div className="logo__grid">
+                    <div className="logo__container"><h2 >Skills:</h2></div>
                     <div className="logo__container"><img className="logo" src={Bootstrap} alt="Bootstrap" /></div>
                     <div className="logo__container"><img className="logo" src={BabelLogo} alt="BabelLogo" /></div>
                     <div className="logo__container"><img className="logo" src={JavaScriptLogo} alt="JavascriptLogo" /></div>
                     <div className="logo__container"><img className="logo" src={ReactLogo} alt="React" /></div>
                     <div className="logo__container"><img className="logo" src={SassLogo} alt="Sass" /></div>
                     <div className="logo__container"><img className="logo" src={CSSLogo} alt="CSS" /></div>
-                    <div className="logo__container"><img className="logo" src={WebpackLogo} alt="CSS" /></div>
                     <div className="logo__container"><img className="logo" src={HtmlLogo} alt="Html5Logo" /></div>
                     <div className="logo__container"><img className="logo" src={PhpLogo} alt="PhpLogo" /></div>
+                    <div className="logo__container"><img className="logo" src={WebpackLogo} alt="CSS" /></div>
                 </div>
            </div>
                 

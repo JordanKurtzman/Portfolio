@@ -14,10 +14,6 @@ module.exports = {
         filename: 'bundle.js'
     },
     plugins: [
-       
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('development')
-        }), 
         new webpack.HotModuleReplacementPlugin({
             multiStep: true
         })

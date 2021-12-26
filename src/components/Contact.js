@@ -95,7 +95,8 @@ const Contact = () => (
                         onChange={handleChange}
                         onBlur={handleBlur}
                         />
-                    <ErrorMessage name="name" />
+                    <ErrorMessage name="name" 
+                            render={msg => <div className="contact__form--error">{msg}</div>} />
 
                     <Field
                         type="email"
@@ -106,7 +107,9 @@ const Contact = () => (
                         onChange={handleChange}
                         onBlur={handleBlur}
                         />
-                    <ErrorMessage name="email" />
+                    <ErrorMessage name="email"
+                            render={msg => <div className="contact__form--error">{msg}</div>}/>
+                    <label className="contact__form--label">Your message:</label>    
                     <Field
                         as='textarea'
                         name='message'
@@ -115,10 +118,8 @@ const Contact = () => (
                         onChange={handleChange} 
                         onBlur={handleBlur}
                         />
-                    <ErrorMessage name="message" />
-
-
-
+                    <ErrorMessage name="message"
+                            render={msg => <div className="contact__form--error">{msg}</div>}/>
 
                     <div>
                         <button className="contact__form--submit" type="submit">Send</button>
